@@ -25,6 +25,10 @@ std::string FormatedAddress(std::string fullName,
                 address = (fullName + "\n" + streetNumber + " " + streetName
                 + "\n" + city +  " " + province + " " + postalCode);
             }
+
+            std::for_each(address.begin(), address.end(),
+            [](char & c) { c = ::toupper(c);});
+
             return address;
         }
 
@@ -89,8 +93,6 @@ main() {
     }
     // output
     std::cout << "\n";
-    std::for_each(returnedAddress.begin(), returnedAddress.end(),
-            [](char & c) { c = ::toupper(c);});
     std::cout << returnedAddress << std::endl;
     std::cout << "\nDone.";
 }
